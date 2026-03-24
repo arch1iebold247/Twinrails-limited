@@ -1,5 +1,5 @@
 /* =====================
-script.js (Centered loader, fades out after a few seconds)
+script.js (Full updated version with centered loader and fade out)
 ===================== */
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -7,11 +7,10 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   if(loader){
-    setTimeout(()=>{
-      loader.style.opacity = "0";
-      loader.style.transition = "opacity 0.5s ease";
-      setTimeout(()=>{ loader.style.display = "none"; }, 500);
-    }, 1500); // Loader stays for 1.5s then fades
+    setTimeout(() => {
+      loader.style.opacity = "0"; // trigger fade out
+      setTimeout(() => { loader.style.display = "none"; }, 500); // remove after transition
+    }, 1500); // loader visible for 1.5s
   }
   updateCart();
 });
@@ -42,8 +41,8 @@ function updateCart(){
   if(sidebar){
     let html = '<button class="close-btn" onclick="toggleCart()">✖ Close</button>';
     html += '<h2>Your Cart</h2>';
-    let total=0;
-    cart.forEach(item=>{
+    let total = 0;
+    cart.forEach(item => {
       total += item.price * item.quantity;
       html += `<div class="cart-item">
         <span>${item.name} x${item.quantity} - $${item.price*item.quantity}</span>
