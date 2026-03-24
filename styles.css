@@ -81,7 +81,7 @@ body {
 }
 
 /* ===== HEADER ===== */
-<header class="glass"> <h1>TwinRails Limited</h1> <nav> <a href="index.html">Home</a> <a href="products.html">Shop</a> <a href="about.html">About</a> <a href="contact.html">Contact</a> <a href="faq.html">FAQs</a> </nav>
+.glass { display:flex; justify-content:space-between; align-items:center; padding: 20px; background:rgba(255,255,255,0.05); backdrop-filter:blur(12px); position:sticky; top:0; z-index:100; } nav a { margin:10px; color:white; text-decoration:none; font-weight:500; transition:0.2s; } nav a:hover { color:#ff4da6; } .cart-icon { cursor:pointer; margin-right:20px; }
 /* ===== HERO ===== */
 .hero { height:90vh; display:flex; justify-content:center; align-items:center; text-align:center; background: radial-gradient(circle at center, #ff4da6, #6a00f4); }
 .hero h2 { font-size:3rem; }
