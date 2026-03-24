@@ -2,39 +2,46 @@
 <html>
 <head>
 <title>Products</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script defer src="script.js"></script>
 </head>
+
 <body>
-<header>
-<h1>All Products</h1>
+
+<header class="glass">
+  <h1>GlowShop</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="faq.html">FAQs</a>
+  </nav>
+  <div class="cart-icon" onclick="toggleCart()">🛒 <span id="cartCount">0</span></div>
 </header>
 
-<div class="products">
-<div class="card">
-<h3>Glow Serum</h3>
-<p>$25</p>
-<button onclick="addToCart('Glow Serum',25)">Add to Cart</button>
-</div>
+<div id="cartSidebar" class="cart-sidebar"></div>
 
-<div class="card">
-<h3>Pink Cream</h3>
-<p>$30</p>
-<button onclick="addToCart('Pink Cream',30)">Add to Cart</button>
-</div>
+<section class="grid">
+  <div class="card">
+    <h3>Glow Serum</h3>
+    <button onclick="addToCart('Glow Serum',25)">Add</button>
+  </div>
 
-<div class="card">
-<h3>Purple Mask</h3>
-<p>$20</p>
-<button onclick="addToCart('Purple Mask',20)">Add to Cart</button>
-</div>
-</div>
+  <div class="card">
+    <h3>Pink Cream</h3>
+    <button onclick="addToCart('Pink Cream',30)">Add</button>
+  </div>
 
-<div class="cart">
-<h2>🛒 Cart</h2>
-<ul id="cartItems"></ul>
-<p id="total"></p>
-<button onclick="checkout()">Checkout</button>
+  <div class="card">
+    <h3>Purple Mask</h3>
+    <button onclick="addToCart('Purple Mask',20)">Add</button>
+  </div>
+</section>
+
+</body>
+</html><button onclick="checkout()">Checkout</button>
 </div>
 
 </body>
