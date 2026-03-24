@@ -1,13 +1,17 @@
+/* =====================
+script.js (Centered loader, fades out after a few seconds)
+===================== */
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   if(loader){
     setTimeout(()=>{
-      loader.style.opacity="0";
-      loader.style.transition="opacity 0.5s ease";
-      setTimeout(()=>{loader.style.display="none";},500);
-    },1500);
+      loader.style.opacity = "0";
+      loader.style.transition = "opacity 0.5s ease";
+      setTimeout(()=>{ loader.style.display = "none"; }, 500);
+    }, 1500); // Loader stays for 1.5s then fades
   }
   updateCart();
 });
@@ -37,7 +41,7 @@ function updateCart(){
 
   if(sidebar){
     let html = '<button class="close-btn" onclick="toggleCart()">✖ Close</button>';
-    html += "<h2>Your Cart</h2>";
+    html += '<h2>Your Cart</h2>';
     let total=0;
     cart.forEach(item=>{
       total += item.price * item.quantity;
@@ -47,7 +51,7 @@ function updateCart(){
       </div>`;
     });
     html += `<h3>Total: $${total}</h3>`;
-    html += `<button onclick="checkout()">Checkout</button>`;
+    html += '<button onclick="checkout()">Checkout</button>';
     sidebar.innerHTML = html;
   }
 }
