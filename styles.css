@@ -40,8 +40,11 @@ body {
   width: 10em;
   height: 10em;
   border-radius: 50%;
-  box-shadow: 0.5em 1em 1em red, -0.5em 0.5em 1em orange, 0.5em -0.5em 1em orangered, -0.5em -0.5em 1em yellow;
-}
+  box-shadow: 
+  0.5em 1em 1em #ff4da6,
+  -0.5em 0.5em 1em #ff80bf,
+  0.5em -0.5em 1em #b84dff,
+  -0.5em -0.5em 1em #6a00f4;
 
 .external-shadow {
   width: 10em;
@@ -51,7 +54,11 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  box-shadow: 0.5em 0.5em 3em red, -0.5em 0.5em 3em orange, 0.5em -0.5em 3em orangered, -0.5em -0.5em 3em yellow;
+  box-shadow: 
+  0.5em 0.5em 3em #ff4da6,
+  -0.5em 0.5em 3em #ff80bf,
+  0.5em -0.5em 3em #b84dff,
+  -0.5em -0.5em 3em #6a00f4;
   z-index: 999;
   animation: rotate 3s linear infinite;
   background-color: #212121;
