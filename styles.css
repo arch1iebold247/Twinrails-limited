@@ -1,68 +1,104 @@
 body {
-text-align:center;
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#0f0f1a;
+color:white;
 }
 
-.products {
+.glass {
 display:flex;
-flex-wrap:wrap;
-gap:20px;
-justify-content:center;
+justify-content:space-between;
 padding:20px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+position:sticky;
+top:0;
+}
+
+nav a {
+margin:10px;
+color:white;
+text-decoration:none;
+}
+
+.hero {
+height:80vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background: radial-gradient(circle,#ff4da6,#6a00f4);
+}
+
+.grid {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+padding:50px;
 }
 
 .card {
-background:white;
-color:black;
+background:#1c1c2e;
 padding:20px;
-border-radius:15px;
-width:200px;
+border-radius:20px;
 text-align:center;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.card:hover {
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(255,0,150,0.3);
 }
 
 button {
-background: linear-gradient(45deg,#ff4da6,#7b2cbf);
-border:none;
 padding:10px;
+background:linear-gradient(45deg,#ff4da6,#6a00f4);
+border:none;
 color:white;
 border-radius:10px;
 cursor:pointer;
 }
 
-.cart {
+.cart-sidebar {
+position:fixed;
+right:-320px;
+top:0;
+width:320px;
+height:100%;
 background:white;
 color:black;
 padding:20px;
-border-radius:15px;
-margin:20px;
+transition:0.4s;
+}
+
+.cart-sidebar.active {
+right:0;
 }
 
 #loader {
 position:fixed;
 width:100%;
 height:100%;
-background:black;
+background:#000;
 display:flex;
 justify-content:center;
 align-items:center;
-z-index:999;
+z-index:9999;
 }
 
-.spinner {
-border:5px solid #fff;
-border-top:5px solid #ff4da6;
-border-radius:50%;
-width:50px;
-height:50px;
-animation: spin 1s linear infinite;
+.bar {
+width:200px;
+height:5px;
+background:#222;
 }
 
-@keyframes spin {
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
+.fill {
+height:100%;
+width:0;
+background:#ff4da6;
+animation:load 2s forwards;
 }
 
-footer {
-text-align:center;
-padding:20px;
+@keyframes load {
+to { width:100% }
 }
