@@ -1,33 +1,25 @@
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-window.onload = () => {
-  document.getElementById("loader").style.display = "none";
-};
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const loader = document.getElementById("loader");
+    if(loader) loader.style.display = "none";
+  }, 1500);
+
+  updateCart();
+});
 
 function addToCart(name, price){
   cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
 }
 
 function updateCart(){
-  const list = document.getElementById("cartItems");
-  const totalEl = document.getElementById("total");
-
-  if(!list) return;
-
-  list.innerHTML = "";
-  let total = 0;
-
-  cart.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = item.name + " - $" + item.price;
-    list.appendChild(li);
-    total += item.price;
-  });
-
-  totalEl.textContent = "Total: $" + total;
+  const count = document.getElementById("cartCount");
+  if(count) count.textContent = cart.length;
 }
 
-function checkout(){
-  alert("Checkout coming next step (Stripe integration)");
+function toggleCart(){
+  document.getElementById("cartSidebar").classList.toggle("active");
 }
