@@ -17,13 +17,19 @@ window.addEventListener("load", () => {
   updateCart();
 });
 
-function addToCart(name, price){
+function addToCart(button) {
+  const card = button.closest('.card');             // Get the product card
+  const name = card.querySelector('h3').textContent; // Get product name
+  let priceText = card.querySelector('.price').textContent; // Get the price text
+  const price = parseFloat(priceText.replace('£','')); // Convert "£10.99" → 10.99
+
   const existing = cart.find(item => item.name === name);
   if(existing){
     existing.quantity += 1;
   } else {
     cart.push({name, price, quantity:1});
   }
+
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
   alert(`${name} added to cart!`);
