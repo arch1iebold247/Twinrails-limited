@@ -26,7 +26,7 @@ function addToCart(name, price){
   }
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
-  alert(`${name} added to cart!`);
+  alert(`£{name} added to cart!`);
 }
 
 function removeFromCart(name){
@@ -47,11 +47,11 @@ function updateCart(){
     cart.forEach(item => {
       total += item.price * item.quantity;
       html += `<div class="cart-item">
-        <span>${item.name} x${item.quantity} - $${item.price*item.quantity}</span>
-        <button onclick="removeFromCart('${item.name}')">Remove</button>
+        <span>£{item.name} x£{item.quantity} - ££{item.price*item.quantity}</span>
+        <button onclick="removeFromCart('£{item.name}')">Remove</button>
       </div>`;
     });
-    html += `<h3>Total: $${total}</h3>`;
+    html += `<h3>Total: ££{total}</h3>`;
     html += '<button onclick="checkout()">Checkout</button>';
     sidebar.innerHTML = html;
   }
