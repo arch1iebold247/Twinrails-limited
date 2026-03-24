@@ -1,109 +1,67 @@
 /* =====================
-styles.css (Updated full version with new circular loader)
+script.js (Updated for new circular loader animation with central percent)
 ===================== */
 
-/* ===== GLOBAL ===== */
-* { box-sizing: border-box; }
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #0f0f1a;
-  color: white;
-  overflow-x: hidden;
-  animation: fadeIn 0.6s ease;
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  if(loader){
+    // Keep loader visible for 1.5s, then fade out smoothly
+    setTimeout(()=>{
+      loader.style.opacity = "0";
+      loader.style.transition = "opacity 0.5s ease";
+      setTimeout(()=>{ loader.style.display = "none"; }, 500);
+    }, 1500);
+  }
+  updateCart();
+});
+
+function addToCart(name, price){
+  const existing = cart.find(item => item.name === name);
+  if(existing){
+    existing.quantity += 1;
+  } else {
+    cart.push({name, price, quantity:1});
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+  alert(`${name} added to cart!`);
 }
 
-/* ===== LOADER ===== */
-#loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #000;
-  z-index: 9999;
-  opacity: 1;
-  transition: opacity 0.5s ease;
+function removeFromCart(name){
+  cart = cart.filter(item => item.name !== name);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
 }
 
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  cursor: not-allowed;
-  scale: 0.7;
+function updateCart(){
+  const count = document.getElementById("cartCount");
+  const sidebar = document.getElementById("cartSidebar");
+  if(count) count.textContent = cart.reduce((a,b)=>a+b.quantity,0);
+
+  if(sidebar){
+    let html = '<button class="close-btn" onclick="toggleCart()">✖ Close</button>';
+    html += '<h2>Your Cart</h2>';
+    let total = 0;
+    cart.forEach(item => {
+      total += item.price * item.quantity;
+      html += `<div class="cart-item">
+        <span>${item.name} x${item.quantity} - $${item.price*item.quantity}</span>
+        <button onclick="removeFromCart('${item.name}')">Remove</button>
+      </div>`;
+    });
+    html += `<h3>Total: $${total}</h3>`;
+    html += '<button onclick="checkout()">Checkout</button>';
+    sidebar.innerHTML = html;
+  }
 }
 
-.central {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 10em;
-  height: 10em;
-  border-radius: 50%;
-  box-shadow: 0.5em 1em 1em red, -0.5em 0.5em 1em orange, 0.5em -0.5em 1em orangered, -0.5em -0.5em 1em yellow;
+function toggleCart(){
+  const cartEl = document.getElementById("cartSidebar");
+  if(cartEl) cartEl.classList.toggle("active");
 }
 
-.external-shadow {
-  width: 10em;
-  height: 10em;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  box-shadow: 0.5em 0.5em 3em red, -0.5em 0.5em 3em orange, 0.5em -0.5em 3em orangered, -0.5em -0.5em 3em yellow;
-  z-index: 999;
-  animation: rotate 3s linear infinite;
-  background-color: #212121;
+function checkout(){
+  alert("Next step: secure checkout integration");
 }
-
-.intern {
-  position: absolute;
-  color: white;
-  z-index: 9999;
-}
-.intern::before { content: "100%"; animation: percent 2s ease-in-out infinite; }
-
-@keyframes rotate { 0% { transform: rotate(0deg); } 50% { transform: rotate(180deg); } 100% { transform: rotate(360deg); } }
-
-@keyframes percent {
-  0% { content: '0%'; } 25% { content: '25%'; } 33% { content: '33%'; } 42% { content: '42%'; }
-  51% { content: '51%'; } 67% { content: '67%'; } 74% { content: '74%'; } 75% { content: '75%'; }
-  86% { content: '86%'; } 95% { content: '95%'; } 98% { content: '98%'; } 99% { content: '99%'; }
-}
-
-/* ===== HEADER ===== */
-.glass { display:flex; justify-content:space-between; align-items:center; padding:20px; background:rgba(255,255,255,0.05); backdrop-filter:blur(12px); position:sticky; top:0; z-index:100; }
-nav a { margin:10px; color:white; text-decoration:none; font-weight:500; transition:0.2s; }
-nav a:hover { color:#ff4da6; }
-.cart-icon { cursor:pointer; margin-right:20px; }
-
-/* ===== HERO ===== */
-.hero { height:90vh; display:flex; justify-content:center; align-items:center; text-align:center; background: radial-gradient(circle at center, #ff4da6, #6a00f4); }
-.hero h2 { font-size:3rem; }
-.btn { margin-top:20px; display:inline-block; padding:12px 30px; background:linear-gradient(45deg, #ff4da6, #6a00f4); border-radius:30px; text-decoration:none; color:white; transition:0.3s; }
-.btn:hover { transform: scale(1.05); }
-
-/* ===== PRODUCTS ===== */
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; padding:50px; }
-.card { background:#1c1c2e; padding:20px; border-radius:20px; text-align:center; transition:0.3s; }
-.card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(255,0,150,0.3); }
-.card img { width:100%; border-radius:15px; }
-button { margin-top:10px; padding:10px; border:none; background:linear-gradient(45deg,#ff4da6,#6a00f4); color:white; border-radius:10px; cursor:pointer; }
-
-/* ===== CART SIDEBAR ===== */
-.cart-sidebar { position:fixed; top:0; right:-100%; width:320px; max-width:90%; height:100%; background:#1c1c2e; color:white; padding:20px; transition:0.4s; z-index:200; box-shadow:-5px 0 20px rgba(0,0,0,0.5); overflow-y:auto; }
-.cart-sidebar.active { right:0; }
-.cart-sidebar .close-btn { position:absolute; top:10px; right:10px; background:transparent; border:none; font-size:1.2rem; cursor:pointer; }
-.cart-sidebar .cart-item { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-.cart-sidebar .cart-item button { background:#ff4da6; padding:4px 8px; font-size:0.9rem; border-radius:5px; }
-
-/* ===== FADE IN ===== */
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
