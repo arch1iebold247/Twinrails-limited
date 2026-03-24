@@ -1,5 +1,5 @@
 /* =====================
-script.js (Full updated version with centered loader and fade out)
+script.js (Updated for new circular loader animation)
 ===================== */
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -7,10 +7,12 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   if(loader){
-    setTimeout(() => {
-      loader.style.opacity = "0"; // trigger fade out
-      setTimeout(() => { loader.style.display = "none"; }, 500); // remove after transition
-    }, 1500); // loader visible for 1.5s
+    // Keep loader visible for 1.5s, then fade out smoothly
+    setTimeout(()=>{
+      loader.style.opacity = "0";
+      loader.style.transition = "opacity 0.5s ease";
+      setTimeout(()=>{ loader.style.display = "none"; }, 500);
+    }, 1500);
   }
   updateCart();
 });
