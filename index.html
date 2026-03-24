@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GlowShop</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script defer src="script.js"></script>
 </head>
@@ -19,6 +18,7 @@
   </div>
 </div>
 
+<!-- Header -->
 <header class="glass">
   <h1>GlowShop</h1>
   <nav>
@@ -31,8 +31,10 @@
   <div class="cart-icon" onclick="toggleCart()">🛒 <span id="cartCount">0</span></div>
 </header>
 
+<!-- Cart -->
 <div id="cartSidebar" class="cart-sidebar"></div>
 
+<!-- Hero -->
 <section class="hero">
   <div>
     <h2>Luxury Beauty Experience</h2>
@@ -41,17 +43,22 @@
   </div>
 </section>
 
+<!-- Featured Products -->
 <section class="grid">
   <div class="card">
     <img src="https://via.placeholder.com/300">
     <h3>Glow Serum</h3>
     <button onclick="addToCart('Glow Serum',25)">Add to Cart</button>
   </div>
-
   <div class="card">
     <img src="https://via.placeholder.com/300">
     <h3>Pink Cream</h3>
     <button onclick="addToCart('Pink Cream',30)">Add to Cart</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300">
+    <h3>Purple Mask</h3>
+    <button onclick="addToCart('Purple Mask',20)">Add to Cart</button>
   </div>
 </section>
 
