@@ -1,5 +1,5 @@
 /* =====================
-script.js (Updated for new circular loader animation)
+script.js (Updated for new circular loader animation with central percent)
 ===================== */
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
