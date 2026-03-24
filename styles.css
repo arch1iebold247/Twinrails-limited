@@ -83,9 +83,10 @@ body {
 /* ===== HEADER ===== */
 .glass {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; /* align everything to the left */
   align-items: center;
-  padding: 20px 10px 20px 5px; /* top right bottom left */
+  padding: 20px 20px; /* top-bottom, left-right */
+  gap: 40px; /* space between logo, nav, cart */
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(12px);
   position: sticky;
