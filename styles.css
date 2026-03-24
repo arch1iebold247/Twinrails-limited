@@ -81,7 +81,7 @@ body {
 }
 
 /* ===== HEADER ===== */
-.glass { display:flex; justify-content:space-between; align-items:center; padding:20px; background:rgba(255,255,255,0.05); backdrop-filter:blur(12px); position:sticky; top:0; z-index:100; }
+.glass { display:flex; justify-content:space-between; align-items:center; padding: 20px 15px; background:rgba(255,255,255,0.05); backdrop-filter:blur(12px); position:sticky; top:0; z-index:100; }
 nav a { margin:10px; color:white; text-decoration:none; font-weight:500; transition:0.2s; }
 nav a:hover { color:#ff4da6; }
 .cart-icon { cursor:pointer; margin-right:20px; }
