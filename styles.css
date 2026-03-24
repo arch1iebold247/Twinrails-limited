@@ -81,18 +81,7 @@ body {
 }
 
 /* ===== HEADER ===== */
-.glass {
-  display: flex;
-  justify-content: flex-start; /* align everything to the left */
-  align-items: center;
-  padding: 20px 20px; /* top-bottom, left-right */
-  gap: 40px; /* space between logo, nav, cart */
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+<header class="glass"> <h1>TwinRails Limited</h1> <nav> <a href="index.html">Home</a> <a href="products.html">Shop</a> <a href="about.html">About</a> <a href="contact.html">Contact</a> <a href="faq.html">FAQs</a> </nav>
 /* ===== HERO ===== */
 .hero { height:90vh; display:flex; justify-content:center; align-items:center; text-align:center; background: radial-gradient(circle at center, #ff4da6, #6a00f4); }
 .hero h2 { font-size:3rem; }
