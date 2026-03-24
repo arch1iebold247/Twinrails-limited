@@ -13,32 +13,47 @@ window.addEventListener("load", () => {
 });
 
 function addToCart(name, price){
-  cart.push({name, price});
+  const existing = cart.find(item => item.name === name);
+  if(existing){
+    existing.quantity += 1;
+  } else {
+    cart.push({name, price, quantity:1});
+  }
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
   alert(`${name} added to cart!`);
 }
 
+function removeFromCart(name){
+  cart = cart.filter(item => item.name !== name);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+}
+
 function updateCart(){
   const count = document.getElementById("cartCount");
   const sidebar = document.getElementById("cartSidebar");
-  if(count) count.textContent = cart.length;
+  if(count) count.textContent = cart.reduce((a,b)=>a+b.quantity,0);
+
   if(sidebar){
     let html = '<button class="close-btn" onclick="toggleCart()">✖ Close</button>';
     html += "<h2>Your Cart</h2>";
     let total=0;
     cart.forEach(item=>{
-      html+=`<p>${item.name} - $${item.price}</p>`;
-      total+=item.price;
+      total += item.price * item.quantity;
+      html += `<div class="cart-item">
+        <span>${item.name} x${item.quantity} - $${item.price*item.quantity}</span>
+        <button onclick="removeFromCart('${item.name}')">Remove</button>
+      </div>`;
     });
-    html+=`<h3>Total: $${total}</h3>`;
-    html+=`<button onclick="checkout()">Checkout</button>`;
+    html += `<h3>Total: $${total}</h3>`;
+    html += `<button onclick="checkout()">Checkout</button>`;
     sidebar.innerHTML = html;
   }
 }
 
 function toggleCart(){
-  const cartEl=document.getElementById("cartSidebar");
+  const cartEl = document.getElementById("cartSidebar");
   if(cartEl) cartEl.classList.toggle("active");
 }
 
