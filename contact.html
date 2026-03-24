@@ -1,25 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact</title>
 <link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
 </head>
 
 <body>
-  <div id="loader">
+
+<!-- Loader -->
+<div id="loader">
   <div class="loader-box">
     <h1>GlowShop</h1>
     <div class="bar"><div class="fill"></div></div>
   </div>
 </div>
 
+<!-- Header -->
 <header class="glass">
   <h1>GlowShop</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="faq.html">FAQs</a>
+  </nav>
+  <div class="cart-icon" onclick="toggleCart()">🛒 <span id="cartCount">0</span></div>
 </header>
 
+<!-- Cart -->
+<div id="cartSidebar" class="cart-sidebar"></div>
+
+<!-- Content -->
 <section class="hero">
-  <h2>Contact Us</h2>
-  <p>Email: support@glowshop.com</p>
+  <div>
+    <h2>Contact Us</h2>
+    <p>Email: support@glowshop.com</p>
+    <p>Phone: +44 123 456 789</p>
+  </div>
 </section>
 
 </body>
