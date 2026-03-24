@@ -4,51 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GlowShop</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script defer src="script.js"></script>
 </head>
+
 <body>
 
-<!-- Loading Screen -->
+<!-- Loader -->
 <div id="loader">
-  <div class="spinner"></div>
+  <div class="loader-box">
+    <h1>GlowShop</h1>
+    <div class="bar"><div class="fill"></div></div>
+  </div>
 </div>
 
-<header>
-<h1>GlowShop</h1>
-<nav>
-<a href="index.html">Home</a>
-<a href="products.html">Products</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="faq.html">FAQs</a>
-</nav>
+<header class="glass">
+  <h1>GlowShop</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="faq.html">FAQs</a>
+  </nav>
+  <div class="cart-icon" onclick="toggleCart()">🛒 <span id="cartCount">0</span></div>
 </header>
 
+<div id="cartSidebar" class="cart-sidebar"></div>
+
 <section class="hero">
-<h2>✨ Popular Products</h2>
-<div class="products">
-
-<div class="card">
-<img src="https://via.placeholder.com/250">
-<h3>Glow Serum</h3>
-<p>$25</p>
-<button onclick="addToCart('Glow Serum',25)">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/250">
-<h3>Pink Cream</h3>
-<p>$30</p>
-<button onclick="addToCart('Pink Cream',30)">Add to Cart</button>
-</div>
-
-</div>
+  <div>
+    <h2>Luxury Beauty Experience</h2>
+    <p>Glow differently with premium skincare.</p>
+    <a href="products.html" class="btn">Shop Now</a>
+  </div>
 </section>
 
-<footer>
-<p>© 2026 GlowShop</p>
-</footer>
+<section class="grid">
+  <div class="card">
+    <img src="https://via.placeholder.com/300">
+    <h3>Glow Serum</h3>
+    <button onclick="addToCart('Glow Serum',25)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/300">
+    <h3>Pink Cream</h3>
+    <button onclick="addToCart('Pink Cream',30)">Add to Cart</button>
+  </div>
+</section>
 
 </body>
 </html>
